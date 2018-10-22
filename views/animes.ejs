@@ -1,0 +1,25 @@
+<% include headers %>
+
+<h1>
+    your animes here
+</h1>
+<div class = "contanier">
+    <div class = "jumbtron">
+            <div class="row">
+            <% animes.forEach(function(anime){%>
+            <div class="col-md-3 col-sm-6">
+             <img src = " <%=anime.image%>">
+                <h6><%=anime.name%></h6> 
+            </div>
+    <% }); %>
+</div>
+    </div>
+    
+</div>
+
+
+<a class = "btn btn-primary btn-large" href="animes/new">New Anime</a>
+
+
+
+<% include footers %>
