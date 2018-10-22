@@ -17,20 +17,20 @@ var animeSchema = new mongoose.Schema({
 
 var animes = mongoose.model("animes", animeSchema);
 
-animes.create(
-    {
-    name: "No Game No Life",
-    image: "https://myanimelist.cdn-dena.com/r/50x70/images/anime/5/65187.webp?s=fd1048e7e02d97f7183eb7c5f0c39e70",
-    description: "",
-    rating: "8.39"
-    }, function(err){
-        if(err){
-            console.log(err);
-        }else{
-            console.log("new anime created");
-        }
-    }
-);
+// animes.create(
+//     {
+//     name: "No Game No Life",
+//     image: "https://myanimelist.cdn-dena.com/r/50x70/images/anime/5/65187.webp?s=fd1048e7e02d97f7183eb7c5f0c39e70",
+//     description: "",
+//     rating: "8.39"
+//     }, function(err){
+//         if(err){
+//             console.log(err);
+//         }else{
+//             console.log("new anime created");
+//         }
+//     }
+// );
 
 // var animes = [
 //     {name:"Death Note", image:"https://myanimelist.cdn-dena.com/r/50x70/images/anime/9/9453.webp?s=bcf651aae2cd301a32bcc46e317a98bc"},
@@ -61,8 +61,15 @@ app.get("/animes/new", function(req,res){
 });
 
 app.post("/anime", function(req,res){
-    animes.push(req.body);
-    res.redirect("/animes");
+    //animes.push(req.body);
+    //res.redirect("/animes");
+    animes.create(req.body,function(err){
+       if(err){
+           console.log(err);
+       } else{
+           res.redirect("/animes");
+       }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
