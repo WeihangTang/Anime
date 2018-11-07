@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/animes', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 var animeSchema = new mongoose.Schema({
    name: String,
